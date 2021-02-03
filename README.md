@@ -39,7 +39,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 </p>
 
 <hr>
-=======
+
 # AngularTourOfHeroes
 
 ### Aprendiendo Angular siguiendo la documentación y tutoriales oficiales.
