@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+//
 import { Hero } from '../hero';
-import { HEROES } from '../mock-heroes';
-
+import { HeroService } from '../hero.service';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-heroes',
@@ -11,16 +12,23 @@ import { HEROES } from '../mock-heroes';
 export class HeroesComponent implements OnInit {
 
   // con ! le decimos a typescript que permita declarar un atributo sin inicializarlo (por defecto hay que inicializar con un valor)
-  heroes = HEROES;
+  heroes!: Hero[];
   selectedHero!: Hero;
   
-  constructor() { }
+  constructor(private HeroService: HeroService, private messageService: MessageService) { }
 
   ngOnInit(): void {
+    this.getHeroes();
   }
 
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
+    this.messageService.add("HeroesComponent: Selected hero id=" + hero.id);
+  }
+
+  getHeroes(): void {
+    this.HeroService.getHeroes()
+      .subscribe(heroes => this.heroes = heroes);
   }
 
 }
