@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { HeroService } from '../hero.service';
-import { Hero } from '../hero';
+import { HeroService } from '../services/hero.service';
+import { Hero } from '../models/hero';
 
 @Component({
   selector: 'app-hero-detail',
@@ -27,7 +27,7 @@ export class HeroDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getHero();
-  }
+  };
 
   // + operator, converts the string to a number
   getHero(): void {
