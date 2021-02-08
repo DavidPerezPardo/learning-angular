@@ -36,7 +36,7 @@ export class HeroService {
     
     return this.http.get<Hero>(this.heroeUrl + id + ".json")
       .pipe(
-        catchError(this.handleError<Hero>('getHero', []))
+        catchError(this.handleError<Hero>('getHero'))
       );
   }
 
@@ -44,7 +44,7 @@ export class HeroService {
     
     return (error: any): Observable<T> => {
       
-      console.error(error);
+      console.error(error.message);
       this.log(operation + ' failed:' + error.message);
 
       return of(result as T);
